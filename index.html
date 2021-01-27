@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>Slider</title>
+    </head>
+    <body>
+      <!-- qui inizia app vue js -->
+      <div id="root">
+        <div class="container">
+            <div class="slider-wrapper">
+              <!-- al click sulla freccia richiama la funzione slideLeft();
+              @click sta per l' istruzione v-on:click  -->
+                <div class="prev" @click="sliderLeft">
+                    <i class="fas fa-angle-left"></i>
+                </div>
+                <div class="images">
+                  <!-- elimino le immagini e aggiungo v-bind(o anche :)al src, che mi
+                  permette di aggiungere un link o un valore dinamico ad un elemento,
+                  in questo caso array immagini e index immagini presi da vue -->
+                    <img class="active" :src="immagini[indexImmagini]" alt="">
+                </div>
+                <div class="next" v-on:click="sliderRight">
+                    <i class="fas fa-angle-right"></i>
+                </div>
+                <div class="nav">
+                  <!-- creo pallini con for per numero dinamico di immagini, se index dei
+                  pallini è uguale a quello delle immagini li coloro con active.
+                  aggiungo la funzione attivaPallini al click -->
+                  <i class="fas fa-circle" v-for="(pallini, index) in immagini" :class="[index === indexImmagini ? 'active' : '']" @click='attivaPallini(index)'></i>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- fine app vue -->
+          <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
